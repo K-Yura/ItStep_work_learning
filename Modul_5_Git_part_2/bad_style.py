@@ -27,6 +27,3 @@ while True:
         break
 print("Кількість виданих книжок:", a)
 print("Загальна кількість днів:", b)
-
-unused_variable = 123
-abc = 0
