@@ -14,14 +14,15 @@ order_pizza_2 = 0
 order_pizza_3 = 0
 
 while True:
-    print("ВИБІР ДІЙ")
+    print("\nМЕНЮ ДІЙ:")
     print("1. Показати меню ресторану")
     print("2. Вибрати піцу")
     print("3. Показати замовлення")
     print("4. Вихід")
     print("=" * 50)
 
-    choice = input("\nВаш вибір: ")
+    choice = input("\nВаша дія: ")
+    print("=" * 50)
 
     if choice == "1":
         print("\nМЕНЮ РЕСТОРАНУ:")
@@ -33,6 +34,7 @@ while True:
 
     elif choice == "2":
         pizza = input("\nВведіть назву піци: ").strip().lower()
+        print("=" * 50)
 
         if pizza == pizzas_1.lower():
             pizza = pizzas_1
@@ -48,6 +50,20 @@ while True:
 
         quantity = int(input("\nВведіть кількість: "))
 
+        if quantity <= 0:
+            print("=" * 50)
+            print("ПОМИЛКА! Кількість піц повинна бути більшою за 0.")
+            print("=" * 50)
+            continue
+
+        total_pizzas = order_pizza_1 + order_pizza_2 + order_pizza_3
+
+        if total_pizzas + quantity > 15:
+            print("=" * 50)
+            print("ПОМИЛКА! Загальна кількість піц не може бути більшою за 15.")
+            print("=" * 50)
+            continue
+
         if pizza == pizzas_1:
             order_pizza_1 += quantity
         elif pizza == pizzas_2:
@@ -56,6 +72,7 @@ while True:
             order_pizza_3 += quantity
 
         print(f'Замовлена піца "{pizza}", в кількості {quantity} шт.')
+        print("=" * 50)
 
     elif choice == "3":
         cost_1 = order_pizza_1 * price_pizzas_1
@@ -69,7 +86,6 @@ while True:
             print("=" * 50)
             continue
 
-        print("=" * 50)
         print("ВАШЕ ЗАМОВЛЕННЯ")
         print("=" * 50)
         print("Піца\t\tКількість\tВартість")
@@ -97,3 +113,4 @@ while True:
     else:
         print("=" * 50)
         print("ПОМИЛКА! Невірний вибір! Спробуйте ще раз.")
+        print("=" * 50)
