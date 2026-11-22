@@ -36,13 +36,7 @@ while True:
         pizza = input("\nВведіть назву піци: ").strip().lower()
         print("=" * 50)
 
-        if pizza == pizzas_1.lower():
-            pizza = pizzas_1
-        elif pizza == pizzas_2.lower():
-            pizza = pizzas_2
-        elif pizza == pizzas_3.lower():
-            pizza = pizzas_3
-        else:
+        if pizza not in (pizzas_1.lower(), pizzas_2.lower(), pizzas_3.lower()):
             print("=" * 50)
             print("ПОМИЛКА! Такої піци в Меню ресторану не існує.")
             print("=" * 50)
@@ -64,11 +58,11 @@ while True:
             print("=" * 50)
             continue
 
-        if pizza == pizzas_1:
+        if pizza == pizzas_1.lower():
             order_pizza_1 += quantity
-        elif pizza == pizzas_2:
+        elif pizza == pizzas_2.lower():
             order_pizza_2 += quantity
-        elif pizza == pizzas_3:
+        elif pizza == pizzas_3.lower():
             order_pizza_3 += quantity
 
         print(f'Замовлена піца "{pizza}", в кількості {quantity} шт.')
