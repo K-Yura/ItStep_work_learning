@@ -1,5 +1,5 @@
 print("\nЗАМОВЛЕННЯ ПІЦИ")
-print("*" * 35)
+print("=" * 50)
 
 pizzas_1 = "Маргарита"
 pizzas_2 = "Пепероні"
@@ -9,21 +9,29 @@ price_pizzas_1 = 150
 price_pizzas_2 = 180
 price_pizzas_3 = 200
 
+order_pizza_1 = 0
+order_pizza_2 = 0
+order_pizza_3 = 0
+
 while True:
-    print("МЕНЮ")
-    print("1. Вибрати піцу")
-    print("2. Вихід")
-    print("*" * 35)
+    print("ВИБІР ДІЙ")
+    print("1. Показати меню ресторану")
+    print("2. Вибрати піцу")
+    print("3. Показати замовлення")
+    print("4. Вихід")
+    print("=" * 50)
 
     choice = input("\nВаш вибір: ")
 
     if choice == "1":
-        print("\nМеню піц:")
+        print("\nМЕНЮ РЕСТОРАНУ:")
+        print("=" * 50)
         print(f"{pizzas_1} - {price_pizzas_1} грн")
         print(f"{pizzas_2} - {price_pizzas_2} грн")
         print(f"{pizzas_3} - {price_pizzas_3} грн")
-        print("*" * 35)
+        print("=" * 50)
 
+    elif choice == "2":
         pizza = input("\nВведіть назву піци: ").strip().lower()
 
         if pizza == pizzas_1.lower():
@@ -33,17 +41,59 @@ while True:
         elif pizza == pizzas_3.lower():
             pizza = pizzas_3
         else:
-            print("ПОМИЛКА! Такої піци в Меню не існує.")
+            print("=" * 50)
+            print("ПОМИЛКА! Такої піци в Меню ресторану не існує.")
+            print("=" * 50)
             continue
 
         quantity = int(input("\nВведіть кількість: "))
+
+        if pizza == pizzas_1:
+            order_pizza_1 += quantity
+        elif pizza == pizzas_2:
+            order_pizza_2 += quantity
+        elif pizza == pizzas_3:
+            order_pizza_3 += quantity
+
         print(f'Замовлена піца "{pizza}", в кількості {quantity} шт.')
 
-    elif choice == "2":
-        print("*" * 35)
+    elif choice == "3":
+        cost_1 = order_pizza_1 * price_pizzas_1
+        cost_2 = order_pizza_2 * price_pizzas_2
+        cost_3 = order_pizza_3 * price_pizzas_3
+
+        total_cost = cost_1 + cost_2 + cost_3
+        if total_cost == 0:
+            print("=" * 50)
+            print("ЗАМОВЛЕННЯ ЩЕ НЕ ЗРОБЛЕНЕ! Зробіть замовлення.")
+            print("=" * 50)
+            continue
+
+        print("=" * 50)
+        print("ВАШЕ ЗАМОВЛЕННЯ")
+        print("=" * 50)
+        print("Піца\t\tКількість\tВартість")
+        print("-" * 50)
+
+        if order_pizza_1 > 0:
+            print(f"{pizzas_1}\t\t{order_pizza_1}\t\t{cost_1} грн")
+
+        if order_pizza_2 > 0:
+            print(f"{pizzas_2}\t\t{order_pizza_2}\t\t{cost_2} грн")
+
+        if order_pizza_3 > 0:
+            print(f"{pizzas_3}\t\t{order_pizza_3}\t\t{cost_3} грн")
+
+        print("-" * 50)
+        print(f"Загальна вартість: {total_cost} грн")
+        print("=" * 50)
+        print("Дякуємо за замовлення!")
+
+    elif choice == "4":
+        print("=" * 50)
         print("До зустрічі наступного разу!")
         break
 
     else:
-        print("*" * 35)
+        print("=" * 50)
         print("ПОМИЛКА! Невірний вибір! Спробуйте ще раз.")
