@@ -19,3 +19,5 @@ while True:
     if len(password) > 8 and is_letter and is_digit:
         print("Пароль прийнято")
         break
+
+    print("Пароль повинен мати більше 8 символів, містити хоча б одну літеру та цифру")
